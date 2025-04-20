@@ -4,5 +4,6 @@ const usersRouter = Router();
 
 usersRouter.get("/", usersController.getHomepage);
 usersRouter.get("/signup", usersController.getSignUp);
+usersRouter.post("/signup", usersController.postSignUp);
 
 module.exports = usersRouter;
