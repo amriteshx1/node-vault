@@ -75,3 +75,8 @@ exports.postSignUp = [
 exports.getLogin = (req, res) => {
   res.render('login', {title: "Login"});
 }
+
+exports.postLogin = passport.authenticate("local", {
+  successRedirect: "/loginHome",
+  failureRedirect: "/login",
+});
