@@ -113,11 +113,17 @@ function ensureAuthenticated(req, res, next) {
   res.redirect("/login");
 }
 
-exports.getLoginHome = [ ensureAuthenticated,
-  (req, res) => {
-  res.render("loginHome", {title : "Home"});
-}
-]
+exports.getLoginHome = [
+  ensureAuthenticated,
+  async (req, res) => {
+    const folders = await prisma.folder.findMany({
+      where: { userId: req.user.id }
+    });
+
+    res.render("loginHome", { title: "Home", folders });
+  }
+];
+
 
 exports.postUpload = [
   ensureAuthenticated,
@@ -130,3 +136,25 @@ exports.postUpload = [
 exports.getCreateFolder = (req,res) => {
   res.render("createFolder", {title: "Create"});
 }
+
+exports.postCreateFolder = [
+  ensureAuthenticated,
+  async (req, res) => {
+    const { foldername } = req.body;
+
+    try {
+      await prisma.folder.create({
+        data: {
+          name: foldername,
+          userId: req.user.id,
+          createdAt: new Date()
+        }
+      });
+
+      res.redirect("/loginHome");
+    } catch (err) {
+      console.error("Error creating folder:", err);
+      res.status(500).send("Something went wrong");
+    }
+  }
+];
