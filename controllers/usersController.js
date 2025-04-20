@@ -126,3 +126,7 @@ exports.postUpload = [
     res.send("File uploaded successfully!");
   }
 ]
+
+exports.getCreateFolder = (req,res) => {
+  res.render("createFolder", {title: "Create"});
+}
