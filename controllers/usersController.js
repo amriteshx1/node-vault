@@ -158,3 +158,7 @@ exports.postCreateFolder = [
     }
   }
 ];
+
+exports.getUploadPage = [ ensureAuthenticated, (req, res) => {
+  res.render("upload", { title: "Upload" });
+}];
