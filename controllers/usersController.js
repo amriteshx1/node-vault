@@ -4,13 +4,13 @@ const passport = require('passport');
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
-const alphaErr = "must only contain letters.";
+const alphaErr = "must only contain letters & numbers.";
 const lengthErr = "must be between 1 and 10 characters.";
 
 const validateUser = [
 
     body("username").trim().notEmpty()
-       .isAlpha().withMessage(`Username ${alphaErr}`)
+       .isAlphanumeric().withMessage(`Username ${alphaErr}`)
        .isLength({ min: 1, max: 10 }).withMessage(`Username ${lengthErr}`),
     body("email").trim().notEmpty()
        .isEmail().normalizeEmail().withMessage('Enter a valid email'),
@@ -80,3 +80,16 @@ exports.postLogin = passport.authenticate("local", {
   successRedirect: "/loginHome",
   failureRedirect: "/login",
 });
+
+exports.getLogout = (req, res) => {
+  req.logout((err) => {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
+  });
+}
+
+exports.getLoginHome = (req, res) => {
+  res.render("loginHome", {title : "Home"});
+}
