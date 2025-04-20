@@ -9,5 +9,6 @@ usersRouter.get("/login", usersController.getLogin);
 usersRouter.post("/login", usersController.postLogin);
 usersRouter.get("/logout", usersController.getLogout);
 usersRouter.get("/loginHome", usersController.getLoginHome);
+usersRouter.post("/upload", usersController.postUpload);
 
 module.exports = usersRouter;

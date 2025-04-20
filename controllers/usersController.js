@@ -3,6 +3,8 @@ const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
+const multer = require("multer");
+const path = require("path");
 
 const alphaErr = "must only contain letters & numbers.";
 const lengthErr = "must be between 1 and 10 characters.";
@@ -90,6 +92,37 @@ exports.getLogout = (req, res) => {
   });
 }
 
-exports.getLoginHome = (req, res) => {
+/* Multer Area */
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "uploads/");
+  },
+  filename: (req, file, cb) => {
+    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+    cb(null, uniqueSuffix + path.extname(file.originalname));
+  },
+});
+
+const upload = multer({ storage });
+
+function ensureAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect("/login");
+}
+
+exports.getLoginHome = [ ensureAuthenticated,
+  (req, res) => {
   res.render("loginHome", {title : "Home"});
 }
+]
+
+exports.postUpload = [
+  ensureAuthenticated,
+  upload.single("file"), (req, res) => {
+    console.log("File uploaded:", req.file);
+    res.send("File uploaded successfully!");
+  }
+]
