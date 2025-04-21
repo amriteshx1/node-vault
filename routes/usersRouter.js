@@ -15,5 +15,6 @@ usersRouter.get("/loginHome/folder", usersController.getCreateFolder);
 usersRouter.post("/loginHome/folder", usersController.postCreateFolder);
 usersRouter.get("/loginHome/edit/:id", usersController.getEditFolder);
 usersRouter.post("/loginHome/edit/:id", usersController.postEditFolder);
+usersRouter.get("/loginHome/delete/:id", usersController.getDeleteFolder);
 
 module.exports = usersRouter;

@@ -17,6 +17,7 @@
         <% folders.forEach(folder => { %>
           <li><%= folder.name %></li>
           <a href="/loginHome/edit/<%= folder.id %>">Edit</a>
+          <a href="/loginHome/delete/<%= folder.id %>" onclick="return confirm('Are you sure you want to delete this message?');">Delete</a>
         <% }) %>
       </ul>
     <% } %>

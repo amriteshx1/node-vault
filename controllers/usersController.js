@@ -181,3 +181,11 @@ exports.postEditFolder = async (req, res) => {
 
   res.redirect("/loginHome");
 };
+
+exports.getDeleteFolder = async(req,res) => {
+  const folderId = parseInt(req.params.id);
+  await prisma.folder.delete({
+    where: {id: folderId}
+  });
+  res.redirect("/loginHome");
+}
