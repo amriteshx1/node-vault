@@ -16,6 +16,7 @@
       <ul>
         <% folders.forEach(folder => { %>
           <li><%= folder.name %></li>
+          <a href="/loginHome/edit/<%= folder.id %>">Edit</a>
         <% }) %>
       </ul>
     <% } %>

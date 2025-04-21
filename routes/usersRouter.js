@@ -13,5 +13,7 @@ usersRouter.get("/loginHome/upload", usersController.getUploadPage);
 usersRouter.post("/upload", usersController.postUpload);
 usersRouter.get("/loginHome/folder", usersController.getCreateFolder);
 usersRouter.post("/loginHome/folder", usersController.postCreateFolder);
+usersRouter.get("/loginHome/edit/:id", usersController.getEditFolder);
+usersRouter.post("/loginHome/edit/:id", usersController.postEditFolder);
 
 module.exports = usersRouter;
