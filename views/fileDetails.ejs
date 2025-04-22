@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+</head>
+<body>
+    <h1>File Details</h1>
+
+  <ul>
+    <li><strong>Name:</strong> <%= file.name %></li>
+    <li><strong>Size:</strong> <%= (file.size / 1024).toFixed(2) %> KB</li>
+    <li><strong>Uploaded At:</strong> <%= file.createdAt.toLocaleString() %></li>
+  </ul>
+
+  <a href="/<%= file.path %>" download>
+    <button>Download File</button>
+  </a>
+
+  <br><br>
+  <a href="/loginHome/folder/<%= file.folderId %>">← Back to Folder</a>
+</body>
+</html>

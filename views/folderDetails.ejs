@@ -20,7 +20,7 @@
     <% } else { %>
     <ul>
       <% folder.files.forEach(file => { %>
-        <li><%= file.name %></li>
+        <a href="/loginHome/file/<%= file.id %>"><%= file.name %></a>
       <% }) %>
     </ul>
     <% } %>

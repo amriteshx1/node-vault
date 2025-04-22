@@ -227,3 +227,18 @@ exports.postUploadFile = [
     res.redirect(`/loginHome/folder/${folderId}`);
   }
 ];
+
+exports.getFileDetails = async (req, res) => {
+  const fileId = parseInt(req.params.id);
+
+  const file = await prisma.file.findUnique({
+    where: { id: fileId }
+  });
+
+  if (!file) return res.status(404).send("File not found");
+
+  res.render("fileDetails", {
+    title: "File Details",
+    file
+  });
+};
