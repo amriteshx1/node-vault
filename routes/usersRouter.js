@@ -17,5 +17,6 @@ usersRouter.get("/loginHome/delete/:id", usersController.getDeleteFolder);
 usersRouter.get("/loginHome/folder/:id", usersController.getFolderDetails);
 usersRouter.post("/loginHome/folder/:id/upload", usersController.postUploadFile);
 usersRouter.get("/loginHome/file/:id", usersController.getFileDetails);
+usersRouter.get("/file/download/:id", usersController.downloadFile);
 
 module.exports = usersRouter;

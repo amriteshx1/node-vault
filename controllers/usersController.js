@@ -7,11 +7,12 @@ const multer = require("multer");
 const path = require("path");
 const { CloudinaryStorage } = require("multer-storage-cloudinary");
 const cloudinary = require("../config/cloudinary");
+const axios = require("axios");
 
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
-    folder: "FileUploaderApp", // optional: folder name in your Cloudinary
+    folder: "FileUploaderApp", 
     allowed_formats: ["jpg", "png", "pdf", "txt", "docx", "zip"],
     public_id: (req, file) => `${Date.now()}-${file.originalname}`,
   },
@@ -234,4 +235,25 @@ exports.getFileDetails = async (req, res) => {
     title: "File Details",
     file
   });
+};
+
+/* THIS DOWNLOAD PROBLEM IS SOLVED BY CHATGPT */
+
+exports.downloadFile = async (req, res) => {
+  const fileId = parseInt(req.params.id);
+  const file = await prisma.file.findUnique({ where: { id: fileId } });
+
+  if (!file) return res.status(404).send("File not found");
+
+  try {
+    const response = await axios.get(file.path, { responseType: "stream" });
+
+    res.setHeader("Content-Disposition", `attachment; filename="${file.name}"`);
+    res.setHeader("Content-Type", response.headers["content-type"]);
+
+    response.data.pipe(res); // stream it to client
+  } catch (err) {
+    console.error("Download error:", err);
+    res.status(500).send("Failed to download the file.");
+  }
 };
