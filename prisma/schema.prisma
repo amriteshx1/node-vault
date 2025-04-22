@@ -36,7 +36,7 @@ model File{
   userId     Int    
   folderId   Int
   user       User       @relation(fields: [userId], references: [id])
-  folder      Folder     @relation(fields: [folderId], references: [id])
+  folder      Folder     @relation(fields: [folderId], references: [id], onDelete: Cascade)
 }
 
 model Session {
