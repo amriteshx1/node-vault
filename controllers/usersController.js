@@ -159,9 +159,6 @@ exports.postCreateFolder = [
   }
 ];
 
-exports.getUploadPage = [ ensureAuthenticated, (req, res) => {
-  res.render("upload", { title: "Upload" });
-}];
 
 exports.getEditFolder = async (req, res) => {
   const folderId = parseInt(req.params.id);
@@ -189,3 +186,20 @@ exports.getDeleteFolder = async(req,res) => {
   });
   res.redirect("/loginHome");
 }
+
+exports.getFolderDetails = async (req, res) => {
+  const folderId = parseInt(req.params.id);
+
+  const folder = await prisma.folder.findUnique({
+    where: { id: folderId },
+    include: {
+      files: true
+    }
+  });
+
+  if (!folder) {
+    return res.status(404).send("Folder not found");
+  }
+
+  res.render("folderDetails", { title: folder.name, folder });
+};

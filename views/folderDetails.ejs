@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+</head>
+<body>
+    <h1>Folder: <%= folder.name %></h1>
+
+    <form action="/upload/<%= folder.id %>" method="post" enctype="multipart/form-data">
+        <label for="upload">Choose file to upload:</label>
+        <input type="file" name="file" id="upload" required />
+        <button type="submit">Upload</button>
+    </form>
+
+    <h2>Files in this folder:</h2>
+        <% if (folder.files.length === 0) { %>
+        <p>No files uploaded yet.</p>
+    <% } else { %>
+    <ul>
+      <% folder.files.forEach(file => { %>
+        <li><%= file.name %></li>
+      <% }) %>
+    </ul>
+    <% } %>
+
+  <a href="/loginHome">Back to Home</a>
+</body>
+</html>
