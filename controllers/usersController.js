@@ -5,6 +5,20 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 const multer = require("multer");
 const path = require("path");
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
+const cloudinary = require("../config/cloudinary");
+
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: "FileUploaderApp", // optional: folder name in your Cloudinary
+    allowed_formats: ["jpg", "png", "pdf", "txt", "docx", "zip"],
+    public_id: (req, file) => `${Date.now()}-${file.originalname}`,
+  },
+});
+
+const upload = multer({ storage });
+
 
 const alphaErr = "must only contain letters & numbers.";
 const lengthErr = "must be between 1 and 10 characters.";
@@ -92,19 +106,6 @@ exports.getLogout = (req, res) => {
   });
 }
 
-/* Multer Area */
-
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "uploads/");
-  },
-  filename: (req, file, cb) => {
-    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
-    cb(null, uniqueSuffix + path.extname(file.originalname));
-  },
-});
-
-const upload = multer({ storage });
 
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
@@ -124,14 +125,6 @@ exports.getLoginHome = [
   }
 ];
 
-
-exports.postUpload = [
-  ensureAuthenticated,
-  upload.single("file"), (req, res) => {
-    console.log("File uploaded:", req.file);
-    res.send("File uploaded successfully!");
-  }
-]
 
 exports.getCreateFolder = (req,res) => {
   res.render("createFolder", {title: "Create"});
