@@ -203,3 +203,27 @@ exports.getFolderDetails = async (req, res) => {
 
   res.render("folderDetails", { title: folder.name, folder });
 };
+
+exports.postUploadFile = [
+  ensureAuthenticated,
+  upload.single("file"),
+  async (req, res) => {
+    const folderId = parseInt(req.params.id);
+
+    if (!req.file) {
+      return res.status(400).send("No file uploaded.");
+    }
+
+    await prisma.file.create({
+      data: {
+        name: req.file.originalname,
+        path: req.file.path,
+        size: req.file.size,
+        userId: req.user.id,
+        folderId: folderId,
+      },
+    });
+
+    res.redirect(`/loginHome/folder/${folderId}`);
+  }
+];

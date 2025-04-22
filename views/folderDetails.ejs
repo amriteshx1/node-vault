@@ -8,7 +8,7 @@
 <body>
     <h1>Folder: <%= folder.name %></h1>
 
-    <form action="/upload/<%= folder.id %>" method="post" enctype="multipart/form-data">
+    <form action="/loginHome/folder/<%= folder.id %>/upload" method="post" enctype="multipart/form-data">
         <label for="upload">Choose file to upload:</label>
         <input type="file" name="file" id="upload" required />
         <button type="submit">Upload</button>
