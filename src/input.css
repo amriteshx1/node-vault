@@ -1,1 +1,31 @@
 @import "tailwindcss";
+
+@layer components{
+    .body-style{
+        @apply min-h-screen w-full text-center font-[Raleway] bg-white;
+    }
+
+    .main-container{
+        @apply h-screen w-screen flex justify-center items-center;
+    }
+
+    .inner-main-container{
+        @apply h-full w-full flex flex-col justify-around items-center p-[5vh] gap-[2vh];
+    }
+
+    .primary-button{
+        @apply w-[15%] text-[1.4vw] bg-gray-900 text-white border-2 border-gray-700 p-[10px] rounded-xl hover:bg-gray-800;
+    }
+
+    .label-input{
+        @apply w-[25%] flex flex-col justify-center items-start gap-1.5;
+    }
+
+    .label-style{
+        @apply text-[1.2vw] text-gray-800;
+    }
+
+    .input-style{
+        @apply w-[100%] p-1 border-2 border-gray-700 rounded-xl;
+    }
+}
