@@ -3,21 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <title><%= title %></title>
 </head>
-<body>
-    <h1>Sign-Up!</h1>
-    <%- include("partials/errors.ejs") %>
-    <form action="/signup" method="post">
-        <label for="username">Username:</label>
-        <input type="text" name="username" id="username" required />
-        <label for="email">Email:</label>
-        <input type="email" name="email" id="email" required />
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password" required />
-        <label for="confirmPassword">Confirm Password:</label>
-        <input type="password" name="confirmPassword" id="confirmPassword" required />
-        <button type="submit">Register</button>
-    </form>
+<body class="body-style">
+    <div class="main-container">
+        <div class="inner-main-container justify-start">
+            <h1 class="text-[2.5vw] text-gray-950">Sign Up!</h1>
+                <form class="inner-main-container justify-start gap-[1vh]" action="/signup" method="post">
+                    <div class="label-input">
+                        <label for="username" class="label-style">Username:</label>
+                        <input type="text" name="username" id="username" required class="input-style" />
+                    </div>
+
+                    <div class="label-input">
+                        <label for="email" class="label-style">Email:</label>
+                        <input type="email" name="email" id="email" required class="input-style" />
+                    </div>
+                    
+                    <div class="label-input">
+                        <label for="password" class="label-style">Password:</label>
+                        <input type="password" name="password" id="password" required class="input-style"/>
+                    </div>
+                    
+                    <div class="label-input">
+                        <label for="confirmPassword" class="label-style">Confirm Password:</label>
+                        <input type="password" name="confirmPassword" id="confirmPassword" required class="input-style"/>
+                    </div>
+
+                    <button type="submit" class="primary-button w-[8%] text-[1.1vw] p-[3px] mt-[2vh] cursor-pointer">Register</button>
+
+                    <%- include("partials/errors.ejs") %>
+                </form>
+        </div>
+    </div>
 </body>
 </html>
