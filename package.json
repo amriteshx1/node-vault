@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/amriteshx1/node-vault#readme",
   "dependencies": {
+    "@tailwindcss/cli": "^4.1.4",
     "axios": "^1.8.4",
     "bcryptjs": "^3.0.2",
     "cloudinary": "^1.41.3",
@@ -31,6 +32,7 @@
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
     "pg": "^8.14.1",
+    "tailwindcss": "^4.1.4",
     "uuid": "^11.1.0"
   },
   "devDependencies": {
