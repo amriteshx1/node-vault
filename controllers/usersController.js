@@ -118,11 +118,17 @@ function ensureAuthenticated(req, res, next) {
 exports.getLoginHome = [
   ensureAuthenticated,
   async (req, res) => {
+    
+    const user = await prisma.user.findUnique({
+      where: { id: req.user.id },
+      select: { username: true } 
+    });
+
     const folders = await prisma.folder.findMany({
       where: { userId: req.user.id }
     });
 
-    res.render("loginHome", { title: "Home", folders });
+    res.render("loginHome", { title: "Home", folders, username: user.username });
   }
 ];
 
