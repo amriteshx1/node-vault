@@ -3,11 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <title><%= title %></title>
 </head>
-<body>
-    <h1>What's up buddy!</h1>
-    <a href="/signup">Sign-Up</a>
-    <a href="/login">Login</a>
+<body class="min-h-screen w-full text-center font-[Raleway] bg-white">
+    <div class="h-screen w-screen flex justify-center items-center">
+        <div class="h-full w-full flex flex-col justify-around items-center p-[5vh] gap-[2vh]">
+            <h1 class="text-[4vw] text-gray-950">Node - Vault</h1>
+            <p class="text-[2.3vw] text-gray-800">A secure cloud vault built with Node.js, Express, and Prisma - upload, organize, and share files with ease.</p>
+            
+            <div class="w-full flex justify-center items-center gap-[5vw]">
+                <a class="w-[15%] text-[1.4vw] bg-gray-900 text-white border-2 border-gray-700 p-[10px] rounded-xl hover:bg-gray-800" href="/signup">
+                    Sign-Up
+                </a>
+                <a class="w-[15%] text-[1.4vw] bg-gray-900 text-white border-2 border-gray-700 p-[10px] rounded-xl hover:bg-gray-800" href="/login">
+                    Login
+                </a>
+            </div>
+
+        </div>
+    </div>
 </body>
 </html>
