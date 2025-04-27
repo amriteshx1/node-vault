@@ -174,17 +174,8 @@
   .flex {
     display: flex;
   }
-  .table {
-    display: table;
-  }
   .h-\[6vh\] {
     height: 6vh;
-  }
-  .h-\[8vh\] {
-    height: 8vh;
-  }
-  .h-\[20\%\] {
-    height: 20%;
   }
   .min-h-\[38vh\] {
     min-height: 38vh;
@@ -207,14 +198,8 @@
   .w-full {
     width: 100%;
   }
-  .border-collapse {
-    border-collapse: collapse;
-  }
   .cursor-pointer {
     cursor: pointer;
-  }
-  .resize {
-    resize: both;
   }
   .flex-col {
     flex-direction: column;
@@ -248,10 +233,6 @@
   }
   .rounded-xl {
     border-radius: var(--radius-xl);
-  }
-  .border {
-    border-style: var(--tw-border-style);
-    border-width: 1px;
   }
   .border-2 {
     border-style: var(--tw-border-style);
@@ -317,10 +298,6 @@
   }
   .decoration-solid {
     text-decoration-style: solid;
-  }
-  .outline {
-    outline-style: var(--tw-outline-style);
-    outline-width: 1px;
   }
   .hover\:text-black {
     &:hover {
@@ -408,17 +385,11 @@
   syntax: "*";
   inherits: false;
 }
-@property --tw-outline-style {
-  syntax: "*";
-  inherits: false;
-  initial-value: solid;
-}
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
       --tw-border-style: solid;
       --tw-font-weight: initial;
-      --tw-outline-style: solid;
     }
   }
 }
