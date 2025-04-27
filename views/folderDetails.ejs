@@ -3,28 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <title><%= title %></title>
 </head>
-<body>
-    <h1>Folder: <%= folder.name %></h1>
+<body class="body-style">
+  <div class="main-container">
+    <div class="inner-main-container">
+      <h1 class="text-[2.5vw] text-gray-950"><%= folder.name %>!</h1>
 
-    <form action="/loginHome/folder/<%= folder.id %>/upload" method="post" enctype="multipart/form-data">
-        <label for="upload">Choose file to upload:</label>
-        <input type="file" name="file" id="upload" required />
-        <button type="submit">Upload</button>
-    </form>
-
-    <h2>Files in this folder:</h2>
-        <% if (folder.files.length === 0) { %>
-        <p>No files uploaded yet.</p>
-    <% } else { %>
-    <ul>
-      <% folder.files.forEach(file => { %>
-        <a href="/loginHome/file/<%= file.id %>"><%= file.name %></a>
-      <% }) %>
-    </ul>
-    <% } %>
-
-  <a href="/loginHome">Back to Home</a>
+            <form class="inner-main-container min-h-[20vh] justify-start p-[2vh] gap-[1vh]" action="/loginHome/folder/<%= folder.id %>/upload" method="post" enctype="multipart/form-data">
+                <div class="label-input">
+                  <label for="upload" class="label-style">New File:</label>
+                  <input type="file" name="file" id="upload" required class="input-style"/>
+                </div>
+      
+                <button type="submit" class="primary-button w-[8%] text-[1.1vw] p-[3px] mt-[2vh] cursor-pointer">Upload</button>
+            </form>
+        
+            <div class="min-h-[45vh] w-full flex flex-col justify-around items-start p-[1vh] border-2 border-gray-700 rounded-xl">
+              <h2 class="text-[1.3vw] text-gray-950 font-medium">Your Files:</h2>
+      
+              <div class="min-h-[38vh] w-full flex flex-col justify-start items-center gap-[2vh]">
+                <% if (folder.files.length === 0) { %>
+                  <p class="text-[1.2vw] text-gray-700">No files uploaded yet.</p>
+                <% } else { %>
+                  
+                  <% folder.files.forEach(file => { %>
+                      <div class="h-[6vh] w-[100%] flex justify-center items-center p-[1vh] border-2 border-gray-600 rounded-xl">
+                        <a href="/loginHome/file/<%= file.id %>" class="text-[1.3vw] text-gray-800 underline decoration-solid decoration-gray-700 hover:text-black"><%= file.name %></a>
+                      </div>
+                
+                     <% }) %>
+                  
+                 <% } %>
+              </div>
+                
+            </div>
+        
+            <a href="/loginHome" class="primary-button w-[10%] text-[1.1vw] p-[3px] mt-[2vh] cursor-pointer">Back to Home</a>
+    </div>
+  </div>
+    
 </body>
 </html>

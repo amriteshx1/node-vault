@@ -174,8 +174,17 @@
   .flex {
     display: flex;
   }
+  .table {
+    display: table;
+  }
   .h-\[6vh\] {
     height: 6vh;
+  }
+  .h-\[20vh\] {
+    height: 20vh;
+  }
+  .min-h-\[20vh\] {
+    min-height: 20vh;
   }
   .min-h-\[38vh\] {
     min-height: 38vh;
@@ -189,6 +198,9 @@
   .w-\[8vw\] {
     width: 8vw;
   }
+  .w-\[10\%\] {
+    width: 10%;
+  }
   .w-\[100\%\] {
     width: 100%;
   }
@@ -198,11 +210,20 @@
   .w-full {
     width: 100%;
   }
+  .border-collapse {
+    border-collapse: collapse;
+  }
   .cursor-pointer {
     cursor: pointer;
   }
+  .resize {
+    resize: both;
+  }
   .flex-col {
     flex-direction: column;
+  }
+  .flex-row {
+    flex-direction: row;
   }
   .items-center {
     align-items: center;
@@ -234,6 +255,10 @@
   .rounded-xl {
     border-radius: var(--radius-xl);
   }
+  .border {
+    border-style: var(--tw-border-style);
+    border-width: 1px;
+  }
   .border-2 {
     border-style: var(--tw-border-style);
     border-width: 2px;
@@ -247,11 +272,17 @@
   .p-\[1vh\] {
     padding: 1vh;
   }
+  .p-\[2vh\] {
+    padding: 2vh;
+  }
   .p-\[3px\] {
     padding: 3px;
   }
   .p-\[5px\] {
     padding: 5px;
+  }
+  .p-\[10px\] {
+    padding: 10px;
   }
   .text-\[1\.1vw\] {
     font-size: 1.1vw;
@@ -298,6 +329,10 @@
   }
   .decoration-solid {
     text-decoration-style: solid;
+  }
+  .outline {
+    outline-style: var(--tw-outline-style);
+    outline-width: 1px;
   }
   .hover\:text-black {
     &:hover {
@@ -385,11 +420,17 @@
   syntax: "*";
   inherits: false;
 }
+@property --tw-outline-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
       --tw-border-style: solid;
       --tw-font-weight: initial;
+      --tw-outline-style: solid;
     }
   }
 }
