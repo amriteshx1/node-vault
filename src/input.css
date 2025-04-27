@@ -6,11 +6,11 @@
     }
 
     .main-container{
-        @apply h-screen w-screen flex justify-center items-center;
+        @apply min-h-screen w-full flex justify-center items-center;
     }
 
     .inner-main-container{
-        @apply h-full w-full flex flex-col justify-around items-center p-[5vh] gap-[2vh];
+        @apply min-h-screen w-full flex flex-col justify-around items-center p-[5vh] gap-[2vh];
     }
 
     .primary-button{

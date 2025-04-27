@@ -15,23 +15,23 @@
 
       <h1 class="text-[2.5vw] text-gray-950">👋 Hey <%= username %>! What's up?</h1>
       <div class="w-full flex justify-start items-center p-[1vh] border-2 border-gray-700 rounded-xl ">
-        <a href="/loginHome/folder" class="primary-button w-[8%] text-[1.1vw] p-[5px] cursor-pointer">New Folder +</a>
+        <a href="/loginHome/folder" class="primary-button w-auto text-[1.1vw] p-[5px] cursor-pointer">New Folder +</a>
       </div>
 
       <div class="min-h-[45vh] w-full flex flex-col justify-around items-start p-[1vh] border-2 border-gray-700 rounded-xl">
         <h2 class="text-[1.3vw] text-gray-950 font-medium">Your Folders:</h2>
 
-        <div class="h-[80%] w-full flex flex-col justify-start items-center gap-[2vh]">
+        <div class="min-h-[38vh] w-full flex flex-col justify-start items-center gap-[2vh]">
           <% if (folders.length === 0) { %>
             <p class="text-[1.2vw] text-gray-700">You have no folders yet.</p>
           <% } else { %>
             
               <% folders.forEach(folder => { %>
-                <div class="h-[20%] w-[100%] flex justify-between items-center p-[1vh] border-2 border-gray-600 rounded-xl">
+                <div class="h-[6vh] w-[100%] flex justify-between items-center p-[1vh] border-2 border-gray-600 rounded-xl">
                   <a href="/loginHome/folder/<%= folder.id %>" class="text-[1.3vw] text-gray-800 underline decoration-solid decoration-gray-700 hover:text-black"><%= folder.name %></a>
-                  <div class="w-[8%] flex justify-between items-center">
-                    <a href="/loginHome/edit/<%= folder.id %>">Edit</a>
-                    <a href="/loginHome/delete/<%= folder.id %>" onclick="return confirm('Are you sure you want to delete this folder?');">Delete</a>
+                  <div class="w-[8vw] flex justify-between items-center">
+                    <a href="/loginHome/edit/<%= folder.id %>" class="text-[1vw] text-gray-500 hover:text-gray-800">Edit</a>
+                    <a href="/loginHome/delete/<%= folder.id %>" class="text-[1vw] text-gray-500 hover:text-gray-800" onclick="return confirm('Are you sure you want to delete this folder?');">Delete</a>
                   </div>
         
                 </div>

@@ -7,7 +7,6 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
-    --color-gray-400: oklch(70.7% 0.022 261.325);
     --color-gray-500: oklch(55.1% 0.027 264.364);
     --color-gray-600: oklch(44.6% 0.03 256.802);
     --color-gray-700: oklch(37.3% 0.034 259.733);
@@ -18,7 +17,6 @@
     --color-white: #fff;
     --spacing: 0.25rem;
     --font-weight-medium: 500;
-    --font-weight-bold: 700;
     --radius-xl: 0.75rem;
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
@@ -179,32 +177,20 @@
   .table {
     display: table;
   }
+  .h-\[6vh\] {
+    height: 6vh;
+  }
+  .h-\[8vh\] {
+    height: 8vh;
+  }
   .h-\[20\%\] {
     height: 20%;
   }
-  .h-\[20\] {
-    height: 20;
-  }
-  .h-\[80\%\] {
-    height: 80%;
-  }
-  .min-h-\[40vh\] {
-    min-height: 40vh;
+  .min-h-\[38vh\] {
+    min-height: 38vh;
   }
   .min-h-\[45vh\] {
     min-height: 45vh;
-  }
-  .w-\[1\%\] {
-    width: 1%;
-  }
-  .w-\[1\] {
-    width: 1;
-  }
-  .w-\[5\%\] {
-    width: 5%;
-  }
-  .w-\[7\%\] {
-    width: 7%;
   }
   .w-\[8\%\] {
     width: 8%;
@@ -212,23 +198,11 @@
   .w-\[8vw\] {
     width: 8vw;
   }
-  .w-\[10\%\] {
-    width: 10%;
-  }
-  .w-\[10vw\] {
-    width: 10vw;
-  }
-  .w-\[30\%\] {
-    width: 30%;
-  }
-  .w-\[90\%\] {
-    width: 90%;
-  }
-  .w-\[95\%\] {
-    width: 95%;
-  }
   .w-\[100\%\] {
     width: 100%;
+  }
+  .w-auto {
+    width: auto;
   }
   .w-full {
     width: 100%;
@@ -263,9 +237,6 @@
   .justify-start {
     justify-content: flex-start;
   }
-  .gap-0 {
-    gap: calc(var(--spacing) * 0);
-  }
   .gap-\[1vh\] {
     gap: 1vh;
   }
@@ -274,12 +245,6 @@
   }
   .gap-\[5vw\] {
     gap: 5vw;
-  }
-  .self-center {
-    align-self: center;
-  }
-  .self-start {
-    align-self: flex-start;
   }
   .rounded-xl {
     border-radius: var(--radius-xl);
@@ -291,12 +256,6 @@
   .border-2 {
     border-style: var(--tw-border-style);
     border-width: 2px;
-  }
-  .border-gray-400 {
-    border-color: var(--color-gray-400);
-  }
-  .border-gray-500 {
-    border-color: var(--color-gray-500);
   }
   .border-gray-600 {
     border-color: var(--color-gray-600);
@@ -322,12 +281,6 @@
   .text-\[1\.3vw\] {
     font-size: 1.3vw;
   }
-  .text-\[1\.4vw\] {
-    font-size: 1.4vw;
-  }
-  .text-\[1\.6vw\] {
-    font-size: 1.6vw;
-  }
   .text-\[1vw\] {
     font-size: 1vw;
   }
@@ -337,25 +290,15 @@
   .text-\[2\.5vw\] {
     font-size: 2.5vw;
   }
-  .text-\[2vw\] {
-    font-size: 2vw;
-  }
   .text-\[4vw\] {
     font-size: 4vw;
-  }
-  .font-bold {
-    --tw-font-weight: var(--font-weight-bold);
-    font-weight: var(--font-weight-bold);
   }
   .font-medium {
     --tw-font-weight: var(--font-weight-medium);
     font-weight: var(--font-weight-medium);
   }
-  .text-\[1\.3vwvw\] {
-    color: 1.3vwvw;
-  }
-  .text-\[1\.vw\] {
-    color: 1.vw;
+  .text-gray-500 {
+    color: var(--color-gray-500);
   }
   .text-gray-700 {
     color: var(--color-gray-700);
@@ -372,17 +315,8 @@
   .decoration-gray-700 {
     text-decoration-color: var(--color-gray-700);
   }
-  .decoration-gray-800 {
-    text-decoration-color: var(--color-gray-800);
-  }
-  .decoration-dotted {
-    text-decoration-style: dotted;
-  }
   .decoration-solid {
     text-decoration-style: solid;
-  }
-  .decoration-wavy {
-    text-decoration-style: wavy;
   }
   .outline {
     outline-style: var(--tw-outline-style);
@@ -395,10 +329,10 @@
       }
     }
   }
-  .hover\:text-gray-950 {
+  .hover\:text-gray-800 {
     &:hover {
       @media (hover: hover) {
-        color: var(--color-gray-950);
+        color: var(--color-gray-800);
       }
     }
   }
@@ -413,14 +347,14 @@
   }
   .main-container {
     display: flex;
-    height: 100vh;
-    width: 100vw;
+    min-height: 100vh;
+    width: 100%;
     align-items: center;
     justify-content: center;
   }
   .inner-main-container {
     display: flex;
-    height: 100%;
+    min-height: 100vh;
     width: 100%;
     flex-direction: column;
     align-items: center;
