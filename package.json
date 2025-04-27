@@ -4,7 +4,10 @@
   "description": "A secure file storage system built with Node.js, Express, and Prisma. It features session-based auth with Passport.js, folder & file management, download support, and public link sharing - your personal cloud vault with full control.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "build-css": "npx @tailwindcss/cli -i ./src/input.css -o ./public/styles.css --minify",
+    "dev-css": "npx @tailwindcss/cli -i ./src/input.css -o ./public/styles.css --watch"
   },
   "repository": {
     "type": "git",
