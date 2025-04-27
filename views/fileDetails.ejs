@@ -3,21 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <title><%= title %></title>
 </head>
-<body>
-    <h1>File Details</h1>
+<body class="body-style">
+  <div class="main-container">
+    <div class="inner-main-container">
+      <h1 class="text-[2.5vw] text-gray-950">File Details</h1>
 
-  <ul>
-    <li><strong>Name:</strong> <%= file.name %></li>
-    <li><strong>Size:</strong> <%= (file.size / 1024).toFixed(2) %> KB</li>
-    <li><strong>Uploaded At:</strong> <%= file.createdAt.toLocaleString() %></li>
-  </ul>
+      <div class="h-[30vh] w-full flex flex-col justify-around items-start p-[1vh] gap-[2vh]">
+        <p class="text-[1.4vw] text-gray-900"><span class="font-medium text-[1.5vw]">Name:</span> <%= file.name %></p>
+        <p class="text-[1.4vw] text-gray-900"><span class="font-medium text-[1.5vw]">Size:</span> <%= (file.size / 1024).toFixed(2) %> KB </p>
+        <p class="text-[1.4vw] text-gray-900"><span class="font-medium text-[1.5vw]">Uploaded At:</span> <%= file.createdAt.toLocaleString() %></p>
+      </div>
+    
 
-  <a href="/file/download/<%= file.id %>">Download File</a>
-  <a href="<%= file.path %>" target="_blank">Shareable Link</a>
+      <div class="self-start w-[25vw] flex justify-start items-center p-[1vh] gap-[2vh]">
+        <a href="/file/download/<%= file.id %>" class="primary-button w-[40%] text-[1vw] p-[5px] cursor-pointer">Download File</a>
+        <a href="<%= file.path %>" target="_blank" class="primary-button w-[40%] text-[1vw] p-[5px] cursor-pointer">Shareable Link</a>
+      </div>
 
-  <br><br>
-  <a href="/loginHome/folder/<%= file.folderId %>">← Back to Folder</a>
+
+      <br><br>
+      <a href="/loginHome/folder/<%= file.folderId %>" class="primary-button w-[10%] text-[1.1vw] p-[5px] cursor-pointer">Back to Folder</a>
+
+      </div>
+  </div>
+    
 </body>
 </html>
